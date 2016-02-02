@@ -9,6 +9,9 @@
 #import "EUExCamera.h"
 #import "EUtility.h"
 #import "EUExBaseDefine.h"
+#import "CameraUtility.h"
+#import "CameraCaptureCamera.h"
+#import "CameraPickerController.h"
 
 @implementation EUExCamera
 
@@ -17,18 +20,8 @@
 -(id)initWithBrwView:(EBrowserView *) eInBrwView{
 	if (self = [super initWithBrwView:eInBrwView]) {
 	}
+    self.imagePickerController = [[UIImagePickerController alloc] init];
 	return self;
-}
-
-#pragma mark -
-#pragma mark - dealloc
-
--(void)dealloc{
-    [super dealloc];
-}
-
--(void)clean{
-    
 }
 
 #pragma mark -
@@ -41,48 +34,76 @@
         if ([compress isKindOfClass:[NSString class]] && compress.length > 0) {
             if (0 == [compress intValue]) {
                 isCompress = YES;
+                scale = 0.5;
                 if ([inArguments count] == 2) {
                     NSString * scaleStr = [inArguments objectAtIndex:1];
-                    if ([scaleStr isKindOfClass:[NSString class]] && scaleStr.length>0) {
-                        scale = [scaleStr floatValue]/100;
-                        if (scale > 100) {
-                            scale = 0.5;
-                        } else if(scale < 0){
-                            scale = 0.5;
-                        }
-                    } else {
-                        scale = 0.5;
+                    float scalefloat = [scaleStr floatValue]/100;
+                    if (scalefloat <= 100 && scalefloat >= 0 ) {
+                        scale = scalefloat;
                     }
-                } else {
-                    scale = 0.5;
                 }
             }
         }
     }
-	[self showCamera];
+    [self showCamera];
+
 }
+
+-(void)openInternal:(NSMutableArray *)inArguments {
+    NSLog(@"uexCamera==>>openInternal");
+    isCompress = NO;
+    if ([inArguments isKindOfClass:[NSMutableArray class]] && [inArguments count] > 0) {
+        NSString * compress = [inArguments objectAtIndex:0];
+        if ([compress isKindOfClass:[NSString class]] && compress.length > 0) {
+            if (0 == [compress intValue]) {
+                isCompress = YES;
+                scale = 0.5;
+                if ([inArguments count] == 2) {
+                    NSString * scaleStr = [inArguments objectAtIndex:1];
+                    float scalefloat = [scaleStr floatValue]/100;
+                    if (scalefloat <= 100 && scalefloat >= 0 ) {
+                        scale = scalefloat;
+                    }
+                }
+            }
+        }
+    }
+    
+    CameraPickerController *cameraPickerController = [[CameraPickerController alloc] init];
+    cameraPickerController.meBrwView = meBrwView;
+    cameraPickerController.uexObj = self;
+    cameraPickerController.scale = scale;
+    cameraPickerController.isCompress = isCompress;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+        [EUtility brwView:meBrwView presentModalViewController:cameraPickerController animated:YES];
+    } else {
+        [EUtility brwView:meBrwView navigationPresentModalViewController:cameraPickerController animated:YES];
+    }
+    
+}
+
 
 -(void)showCamera {
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [super jsFailedWithOpId:0 errorCode:1030108 errorDes:UEX_ERROR_DESCRIBE_DEVICE_SUPPORT];
     } else {
-        UIImagePickerController * imagePickerController = [[UIImagePickerController alloc] init];
-        [imagePickerController setDelegate:self];
+        
+        [self.imagePickerController setDelegate:self];
         //        [imagePickerController setAllowsEditing:YES];
-        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
-        [imagePickerController setVideoQuality:UIImagePickerControllerQualityTypeMedium];
-		if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-			[EUtility brwView:meBrwView presentModalViewController:imagePickerController animated:YES];
-		} else {
-			[EUtility brwView:meBrwView navigationPresentModalViewController:imagePickerController animated:YES];
-		}
+        [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [self.imagePickerController setVideoQuality:UIImagePickerControllerQualityTypeMedium];
+        
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+            [EUtility brwView:meBrwView presentModalViewController:self.imagePickerController animated:YES];
+        } else {
+            [EUtility brwView:meBrwView navigationPresentModalViewController:self.imagePickerController animated:YES];
+        }
         if (IsIOS6OrLower) {
             
         } else {
             UIViewController *controller = [EUtility brwCtrl:meBrwView];
             [controller setNeedsStatusBarAppearanceUpdate];
         }
-        [imagePickerController release];
     }
 }
 
@@ -127,123 +148,18 @@
 	}
 }
 
-#pragma mark -
-#pragma mark - 获得保存图片的名字 处理图片根据图片宽度 保存图片
-
--(NSString *)getSavename:(NSString *)type {
-    NSString * wgtPath = [super absPath:@"wgt://"];
-	NSString * photoPath = [wgtPath stringByAppendingPathComponent:@"photo"];
- 	NSFileManager * filemag = [NSFileManager defaultManager];
-	if (![filemag fileExistsAtPath:photoPath]) {
-		[filemag createDirectoryAtPath:photoPath withIntermediateDirectories:YES attributes:nil error:nil];
-	}
-	NSString * filepath_cfg = [photoPath stringByAppendingPathComponent:@"photoCfg.cfg"];
-	NSString * maxNum = [NSString stringWithContentsOfFile:filepath_cfg encoding:NSUTF8StringEncoding error:nil];
-	int max = 0;
-	NSString * saveName;
-	if (maxNum) {
-		max = [maxNum intValue];
-		if (max == 9999) {
-			max = 0;
-		} else {
-			max ++;
-		}
-		NSString * currentMax = [NSString stringWithFormat:@"%d",max];
-		[currentMax writeToFile:filepath_cfg atomically:YES encoding:NSUTF8StringEncoding error:nil];
-	} else {
-		NSString * currentMax = @"0";
-		[currentMax writeToFile:filepath_cfg atomically:YES encoding:NSUTF8StringEncoding error:nil];
-	}
-	
-	NSString * fileType;
-	if ([type isEqualToString:@"image"]) {
-		fileType = @"JPG";
-	} else {
-		fileType = @"MOV";
-	}
-	
-	if (max < 10 & max >= 0) {
-        if ([fileType isEqualToString:@"JPG"]) {
-            fileType = @"jpg";
-        }
-		saveName = [NSString stringWithFormat:@"IMG000%d.%@", max, fileType];
-	} else if (max < 100 & max >= 10) {
-		saveName = [NSString stringWithFormat:@"IMG00%d.%@", max, fileType];
-	} else if (max < 1000 & max >= 100) {
-		saveName = [NSString stringWithFormat:@"IMG0%d.%@", max, fileType];
-	} else if (max < 10000 & max >= 1000) {
-		saveName = [NSString stringWithFormat:@"IMG%d.%@", max, fileType];
-	} else {
-		saveName = [NSString stringWithFormat:@"IMG0000.%@", fileType];
-	}
-	return [photoPath stringByAppendingPathComponent:saveName];
-}
-
--(UIImage *)imageByScalingAndCroppingForSize:(UIImage *)sourceImage width:(float)destWith {
-    UIImage * newImage = nil;
-	CGFloat srcWidth = sourceImage.size.width;
-	CGFloat srcHeight = sourceImage.size.height;
-	CGFloat targetWidth;
-	CGFloat targetHeight;
-    if (srcWidth <= destWith) {
-        targetWidth = srcWidth;
-        targetHeight = srcHeight;
-    } else {
-        targetWidth = destWith;
-        targetHeight = (srcHeight * destWith)/(srcWidth * 1.0);
-    }
-    CGSize targetSize = CGSizeMake(targetWidth, targetHeight);
-    CGFloat scaleFactor = 0.0;
-    CGFloat scaledWidth = targetWidth;
-    CGFloat scaledHeight = targetHeight;
-    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-    
-    if (CGSizeEqualToSize(sourceImage.size, targetSize) == NO) {
-        CGFloat widthFactor = targetWidth / srcWidth;
-        CGFloat heightFactor = targetHeight / srcHeight;
-        
-        if (widthFactor > heightFactor){
-            scaleFactor = widthFactor; // scale to fit height
-        } else {
-            scaleFactor = heightFactor; // scale to fit width
-        }
-        scaledWidth  = srcWidth * scaleFactor;
-        scaledHeight = srcHeight * scaleFactor;
-        
-        // center the image
-        if (widthFactor > heightFactor) {
-            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
-        } else if (widthFactor < heightFactor) {
-			thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-		}
-    }
-    UIGraphicsBeginImageContext(targetSize); // this will crop
-    
-    CGRect thumbnailRect = CGRectZero;
-    thumbnailRect.origin = thumbnailPoint;
-    thumbnailRect.size.width  = scaledWidth;
-    thumbnailRect.size.height = scaledHeight;
-    
-    [sourceImage drawInRect:thumbnailRect];
-    
-    newImage = UIGraphicsGetImageFromCurrentImageContext();
-    if(newImage == nil) {
-        UIGraphicsEndImageContext();
-    }
-    return newImage;
-}
-
 -(void)savaImg:(UIImage *)image {
 	//保存到一个指定目录
 	NSError * error;
     NSFileManager * fmanager = [NSFileManager defaultManager];
-    NSString * imagePath = [self getSavename:@"image"];
+    NSString * wgtPath = [super absPath:@"wgt://"];
+    NSString * imagePath = [CameraUtility getSavename:@"image" wgtPath:wgtPath];
  	if([fmanager fileExistsAtPath:imagePath]) {
         [fmanager removeItemAtPath:imagePath error:&error];
 	}
 	UIImage * newImage = [EUtility rotateImage:image];
     //压缩
-    UIImage * needSaveImg = [self imageByScalingAndCroppingForSize:newImage width:640];
+    UIImage * needSaveImg = [CameraUtility imageByScalingAndCroppingForSize:newImage width:640];
     //压缩比率，0：压缩后的图片最小，1：压缩后的图片最大
     NSData * imageData = nil;
     if (isCompress) {
@@ -257,6 +173,83 @@
 	} else {
 		[super jsFailedWithOpId:0 errorCode:1030105 errorDes:UEX_ERROR_DESCRIBE_FILE_SAVE];
 	}
+}
+
+
+#pragma mark -
+#pragma mark - 自定义相机
+- (void)openViewCamera:(NSMutableArray *)array {
+    
+    @try {
+        
+        float x = [array objectAtIndex:0]?[[array objectAtIndex:0] floatValue]:0.0;
+        float y = [array objectAtIndex:1]?[[array objectAtIndex:1] floatValue]:0.0;
+        float w = [array objectAtIndex:2]?[[array objectAtIndex:2] floatValue]:SC_DEVICE_SIZE.width;
+        float h = [array objectAtIndex:3]?[[array objectAtIndex:3] floatValue]:SC_DEVICE_SIZE.height;
+        NSString *address = [array objectAtIndex:4]?[array objectAtIndex:4]:@"暂无地址";
+        
+        _captureCameraView = [[CameraCaptureCamera alloc] initWithFrame:CGRectMake(x, y, w, h)];
+        _captureCameraView.address = address;
+        _captureCameraView.meBrwView = meBrwView;
+        _captureCameraView.uexObj = self;
+        if (array.count >= 5) {
+            _captureCameraView.quality = [[array objectAtIndex:5] floatValue] / 100.0;
+        }
+        [_captureCameraView setUpUI];
+        [EUtility brwView:meBrwView addSubview:_captureCameraView];
+    }
+    @catch (NSException *exception) {
+        
+        NSLog(@"AppCanLog-->uexTableView-->EUExTableView-->open-->catch-->%@\n%@\n%@",exception.name,exception.reason,exception.userInfo);
+        
+    }
+    @finally {
+        //
+    }
+    
+}
+
+//0代表自动，1代表打开闪光灯，2代表关闭闪光灯
+-(void)changeFlashMode:(NSMutableArray *)array{
+    //uexCamera.cbChangeFlashMode
+    NSString *flashMode = [array objectAtIndex:0]?[array objectAtIndex:0]:@"0";
+    if (_captureCameraView) {
+        [_captureCameraView switchFlashMode:flashMode];
+    }else{
+        NSLog(@"EUExCamera==>>changeFlashMode==>>相机初始化失败");
+        [self jsSuccessWithName:@"uexCamera.cbChangeFlashMode" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:@"-1"];
+        NSLog(@"EUExCamera==>>changeFlashMode==>>回调完成");
+        
+    }
+    
+}
+
+//0代表前置，1代表后置
+-(void)changeCameraPosition:(NSMutableArray *)array{
+    //uexCamera.cbChangeCameraPosition
+    NSString *cameraPosition = [array objectAtIndex:0]?[array objectAtIndex:0]:@"1";
+    if (_captureCameraView) {
+        [_captureCameraView switchCamera:cameraPosition];
+    }else{
+        NSLog(@"EUExCamera==>>changeCameraPosition==>>相机初始化失败");
+        [self jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:@"-1"];
+        NSLog(@"EUExCamera==>>changeCameraPosition==>>回调完成");
+    }
+    
+}
+
+- (void)removeViewCameraFromWindow{
+    
+    if (_captureCameraView) {
+        NSLog(@"EUExCamera==>>removeViewCameraFromWindow==>>delegate关闭openViewCamera相机");
+        [_captureCameraView removeFromSuperview];
+    }
+    
+}
+
+- (void)CloseCamera{
+    
+    [self removeViewCameraFromWindow];
 }
 
 @end
