@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		5AA8D54B188F9DBB00C854BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8D54A188F9DBB00C854BC /* Foundation.framework */; };
 		5AA8D552188F9DBB00C854BC /* EUExCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8D551188F9DBB00C854BC /* EUExCamera.m */; };
+		D75F5EB01C6046B600F480FA /* CameraUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EAF1C6046B600F480FA /* CameraUtility.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EDD1C604CE500F480FA /* CameraCaptureCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC31C604CE500F480FA /* CameraCaptureCamera.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EDE1C604CE500F480FA /* CameraCaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC51C604CE500F480FA /* CameraCaptureSessionManager.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EDF1C604CE500F480FA /* CameraSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC71C604CE500F480FA /* CameraSlider.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EE01C604CE500F480FA /* UIImage+CameraResize.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC91C604CE500F480FA /* UIImage+CameraResize.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EE11C604CE500F480FA /* CameraCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ECC1C604CE500F480FA /* CameraCommon.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EE21C604CE500F480FA /* CameraPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ED01C604CE500F480FA /* CameraPickerController.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EE31C604CE500F480FA /* CameraPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +42,31 @@
 		5AA8D571188F9E2B00C854BC /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		5AA8D572188F9E2B00C854BC /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		5AA8D573188F9E2B00C854BC /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
+		D75F5EAE1C6046B600F480FA /* CameraUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtility.h; sourceTree = "<group>"; };
+		D75F5EAF1C6046B600F480FA /* CameraUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraUtility.m; sourceTree = "<group>"; };
+		D75F5EC21C604CE500F480FA /* CameraCaptureCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureCamera.h; sourceTree = "<group>"; };
+		D75F5EC31C604CE500F480FA /* CameraCaptureCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureCamera.m; sourceTree = "<group>"; };
+		D75F5EC41C604CE500F480FA /* CameraCaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCaptureSessionManager.h; sourceTree = "<group>"; };
+		D75F5EC51C604CE500F480FA /* CameraCaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCaptureSessionManager.m; sourceTree = "<group>"; };
+		D75F5EC61C604CE500F480FA /* CameraSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraSlider.h; sourceTree = "<group>"; };
+		D75F5EC71C604CE500F480FA /* CameraSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraSlider.m; sourceTree = "<group>"; };
+		D75F5EC81C604CE500F480FA /* UIImage+CameraResize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CameraResize.h"; sourceTree = "<group>"; };
+		D75F5EC91C604CE500F480FA /* UIImage+CameraResize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CameraResize.m"; sourceTree = "<group>"; };
+		D75F5ECB1C604CE500F480FA /* CameraCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCommon.h; sourceTree = "<group>"; };
+		D75F5ECC1C604CE500F480FA /* CameraCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraCommon.m; sourceTree = "<group>"; };
+		D75F5ECD1C604CE500F480FA /* CameraDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDefines.h; sourceTree = "<group>"; };
+		D75F5ECF1C604CE500F480FA /* CameraPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPickerController.h; sourceTree = "<group>"; };
+		D75F5ED01C604CE500F480FA /* CameraPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPickerController.m; sourceTree = "<group>"; };
+		D75F5ED21C604CE500F480FA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		D75F5ED31C604CE500F480FA /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
+		D75F5ED41C604CE500F480FA /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		D75F5ED51C604CE500F480FA /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		D75F5ED61C604CE500F480FA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		D75F5ED71C604CE500F480FA /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		D75F5ED81C604CE500F480FA /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		D75F5ED91C604CE500F480FA /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		D75F5EDB1C604CE500F480FA /* CameraPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPostViewController.h; sourceTree = "<group>"; };
+		D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +114,9 @@
 				5A60A94A18AB608500C727A6 /* EUExCamera.h */,
 				5AA8D551188F9DBB00C854BC /* EUExCamera.m */,
 				5AA8D570188F9E2B00C854BC /* engineHeader */,
+				D75F5EAE1C6046B600F480FA /* CameraUtility.h */,
+				D75F5EAF1C6046B600F480FA /* CameraUtility.m */,
+				D75F5EC01C604CE500F480FA /* sourceCode */,
 				5AA8D54D188F9DBB00C854BC /* Supporting Files */,
 			);
 			path = EUExCamera;
@@ -102,6 +138,76 @@
 				5AA8D573188F9E2B00C854BC /* EUtility.h */,
 			);
 			path = engineHeader;
+			sourceTree = "<group>";
+		};
+		D75F5EC01C604CE500F480FA /* sourceCode */ = {
+			isa = PBXGroup;
+			children = (
+				D75F5EC11C604CE500F480FA /* CameraCaptureCamera */,
+				D75F5ECA1C604CE500F480FA /* CameraCommon */,
+				D75F5ECE1C604CE500F480FA /* CameraPickerController */,
+				D75F5ED11C604CE500F480FA /* JSON */,
+				D75F5EDA1C604CE500F480FA /* Post */,
+			);
+			path = sourceCode;
+			sourceTree = "<group>";
+		};
+		D75F5EC11C604CE500F480FA /* CameraCaptureCamera */ = {
+			isa = PBXGroup;
+			children = (
+				D75F5EC21C604CE500F480FA /* CameraCaptureCamera.h */,
+				D75F5EC31C604CE500F480FA /* CameraCaptureCamera.m */,
+				D75F5EC41C604CE500F480FA /* CameraCaptureSessionManager.h */,
+				D75F5EC51C604CE500F480FA /* CameraCaptureSessionManager.m */,
+				D75F5EC61C604CE500F480FA /* CameraSlider.h */,
+				D75F5EC71C604CE500F480FA /* CameraSlider.m */,
+				D75F5EC81C604CE500F480FA /* UIImage+CameraResize.h */,
+				D75F5EC91C604CE500F480FA /* UIImage+CameraResize.m */,
+			);
+			path = CameraCaptureCamera;
+			sourceTree = "<group>";
+		};
+		D75F5ECA1C604CE500F480FA /* CameraCommon */ = {
+			isa = PBXGroup;
+			children = (
+				D75F5ECB1C604CE500F480FA /* CameraCommon.h */,
+				D75F5ECC1C604CE500F480FA /* CameraCommon.m */,
+				D75F5ECD1C604CE500F480FA /* CameraDefines.h */,
+			);
+			path = CameraCommon;
+			sourceTree = "<group>";
+		};
+		D75F5ECE1C604CE500F480FA /* CameraPickerController */ = {
+			isa = PBXGroup;
+			children = (
+				D75F5ECF1C604CE500F480FA /* CameraPickerController.h */,
+				D75F5ED01C604CE500F480FA /* CameraPickerController.m */,
+			);
+			path = CameraPickerController;
+			sourceTree = "<group>";
+		};
+		D75F5ED11C604CE500F480FA /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				D75F5ED21C604CE500F480FA /* JSON.h */,
+				D75F5ED31C604CE500F480FA /* JSONParser.h */,
+				D75F5ED41C604CE500F480FA /* NSObject+SBJSON.h */,
+				D75F5ED51C604CE500F480FA /* NSString+SBJSON.h */,
+				D75F5ED61C604CE500F480FA /* SBJSON.h */,
+				D75F5ED71C604CE500F480FA /* SBJsonBase.h */,
+				D75F5ED81C604CE500F480FA /* SBJsonParser.h */,
+				D75F5ED91C604CE500F480FA /* SBJsonWriter.h */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		D75F5EDA1C604CE500F480FA /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				D75F5EDB1C604CE500F480FA /* CameraPostViewController.h */,
+				D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,7 +261,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75F5EDF1C604CE500F480FA /* CameraSlider.m in Sources */,
+				D75F5EDE1C604CE500F480FA /* CameraCaptureSessionManager.m in Sources */,
+				D75F5EE01C604CE500F480FA /* UIImage+CameraResize.m in Sources */,
 				5AA8D552188F9DBB00C854BC /* EUExCamera.m in Sources */,
+				D75F5EE31C604CE500F480FA /* CameraPostViewController.m in Sources */,
+				D75F5EE11C604CE500F480FA /* CameraCommon.m in Sources */,
+				D75F5EDD1C604CE500F480FA /* CameraCaptureCamera.m in Sources */,
+				D75F5EE21C604CE500F480FA /* CameraPickerController.m in Sources */,
+				D75F5EB01C6046B600F480FA /* CameraUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -226,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -236,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/";
 				DSTROOT = /tmp/EUExCamera.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -251,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/";
 				DSTROOT = /tmp/EUExCamera.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
