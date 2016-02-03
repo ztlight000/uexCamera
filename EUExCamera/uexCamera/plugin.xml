@@ -2,5 +2,10 @@
 <uexplugins>
     <plugin name="uexCamera">
         <method name="open"></method>
+        <method name="openInternal"></method>
+        <method name="openViewCamera"></method>
+        <method name="removeViewCameraFromWindow"></method>
+        <method name="changeFlashMode"></method>
+        <method name="changeCameraPosition"></method>
 	</plugin>
 </uexplugins>
