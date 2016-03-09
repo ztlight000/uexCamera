@@ -169,8 +169,8 @@
     
     NSString *filePath = [createPath stringByAppendingPathComponent:[NSString stringWithFormat:@"EUExCamera_%@.png", timeString]];
     NSLog(@"EUExCamera==>>saveImageWith==>>照片_postImage=%@,filePath=%@",_postImage,filePath);
-    [UIImagePNGRepresentation(_postImage) writeToFile: filePath atomically:YES];
-    [UIImageJPEGRepresentation(_postImage, self.quality) writeToFile:filePath atomically:YES];
+//    [UIImagePNGRepresentation(_postImage) writeToFile: filePath atomically:YES];
+    [UIImageJPEGRepresentation(image, self.quality) writeToFile:filePath atomically:YES];
     return filePath;
     
 }

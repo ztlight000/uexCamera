@@ -192,7 +192,7 @@
         _captureCameraView.address = address;
         _captureCameraView.meBrwView = meBrwView;
         _captureCameraView.uexObj = self;
-        if (array.count >= 5) {
+        if (array.count > 5) {
             _captureCameraView.quality = [[array objectAtIndex:5] floatValue] / 100.0;
         }
         [_captureCameraView setUpUI];
@@ -200,7 +200,7 @@
     }
     @catch (NSException *exception) {
         
-        NSLog(@"AppCanLog-->uexTableView-->EUExTableView-->open-->catch-->%@\n%@\n%@",exception.name,exception.reason,exception.userInfo);
+        NSLog(@"EUExCamera==>>openViewCamera==>>catch==>>%@\n%@\n%@",exception.name,exception.reason,exception.userInfo);
         
     }
     @finally {
