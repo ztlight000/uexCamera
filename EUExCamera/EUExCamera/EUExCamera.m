@@ -224,10 +224,15 @@
     
 }
 
-//0代表前置，1代表后置
+//1代表前置，0代表后置
 -(void)changeCameraPosition:(NSMutableArray *)array{
-    //uexCamera.cbChangeCameraPosition
-    NSString *cameraPosition = [array objectAtIndex:0]?[array objectAtIndex:0]:@"1";
+    
+    NSString *cameraPosition = @"0";
+    
+    if (array.count > 0) {
+        cameraPosition = [array objectAtIndex:0];
+    }
+    
     if (_captureCameraView) {
         [_captureCameraView switchCamera:cameraPosition];
     }else{
