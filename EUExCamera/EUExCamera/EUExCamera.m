@@ -192,7 +192,7 @@
         _captureCameraView.address = address;
         _captureCameraView.meBrwView = meBrwView;
         _captureCameraView.uexObj = self;
-        if (array.count >= 5) {
+        if (array.count > 5) {
             _captureCameraView.quality = [[array objectAtIndex:5] floatValue] / 100.0;
         }
         [_captureCameraView setUpUI];
@@ -200,7 +200,7 @@
     }
     @catch (NSException *exception) {
         
-        NSLog(@"AppCanLog-->uexTableView-->EUExTableView-->open-->catch-->%@\n%@\n%@",exception.name,exception.reason,exception.userInfo);
+        NSLog(@"EUExCamera==>>openViewCamera==>>catch==>>%@\n%@\n%@",exception.name,exception.reason,exception.userInfo);
         
     }
     @finally {
@@ -224,10 +224,15 @@
     
 }
 
-//0代表前置，1代表后置
+//1代表前置，0代表后置
 -(void)changeCameraPosition:(NSMutableArray *)array{
-    //uexCamera.cbChangeCameraPosition
-    NSString *cameraPosition = [array objectAtIndex:0]?[array objectAtIndex:0]:@"1";
+    
+    NSString *cameraPosition = @"0";
+    
+    if (array.count > 0) {
+        cameraPosition = [array objectAtIndex:0];
+    }
+    
     if (_captureCameraView) {
         [_captureCameraView switchCamera:cameraPosition];
     }else{

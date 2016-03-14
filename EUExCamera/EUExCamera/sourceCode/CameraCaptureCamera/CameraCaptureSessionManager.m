@@ -270,7 +270,7 @@
     [_session removeInput:_inputDevice];
     
     BOOL isFrontCamera;
-    if ([cameraPosition isEqualToString:@"0"]) {
+    if ([cameraPosition isEqualToString:@"1"]) {
         isFrontCamera = YES;
     }else {
         isFrontCamera = NO;

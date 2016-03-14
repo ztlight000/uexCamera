@@ -82,7 +82,7 @@
     
 #if SWITCH_SHOW_DEFAULT_IMAGE_FOR_NONE_CAMERA
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        //        [SVProgressHUD showErrorWithStatus:@"设备不支持拍照功能，给个妹纸给你喵喵T_T"];
+        //        [SVProgressHUD showErrorWithStatus:@"设备不支持拍照功能T_T"];
         
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CAMERA_TOPVIEW_HEIGHT, self.frame.size.width, self.frame.size.width)];
         imgView.clipsToBounds = YES;
@@ -356,7 +356,7 @@ void c_slideAlpha() {
 }
 
 //拍照页面，闪光灯按钮
-- (void)switchFlashButton:(UIButton *)flashMode {
+- (void)switchFlashMode:(NSString *)flashMode {
     NSString * result = [_captureManager switchFlashMode:flashMode];
     if (_uexObj) {
         [_uexObj jsSuccessWithName:@"uexCamera.cbOpenViewCamera" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
