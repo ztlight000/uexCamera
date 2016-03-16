@@ -26,7 +26,14 @@
 #define SCDLog(x, ...)
 #endif
 
-
+//Position
+#define ADDRESS_FONT 20
+#define POSITION_TOP 50
+#define POSITION_BOTTOM 40
+#define POSITION_LEFT 25
+#define BUTTON_WIDTH 80
+#define BUTTON_HEIGHT 30
+#define BUTTON_X 10
 
 //notification
 #define kCapturedPhotoSuccessfully              @"caputuredPhotoSuccessfully"
@@ -47,6 +54,7 @@
 //frame and size
 #define SC_DEVICE_BOUNDS    [[UIScreen mainScreen] bounds]
 #define SC_DEVICE_SIZE      [[UIScreen mainScreen] bounds].size
+
 
 #define SC_APP_FRAME        [[UIScreen mainScreen] applicationFrame]
 #define SC_APP_SIZE         [[UIScreen mainScreen] applicationFrame].size

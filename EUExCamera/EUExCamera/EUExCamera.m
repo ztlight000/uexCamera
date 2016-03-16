@@ -13,6 +13,13 @@
 #import "CameraCaptureCamera.h"
 #import "CameraPickerController.h"
 
+
+@interface EUExCamera(){
+
+}
+
+@end
+
 @implementation EUExCamera
 
 #define IsIOS6OrLower ([[[UIDevice currentDevice] systemVersion] floatValue]<7.0)
@@ -50,6 +57,7 @@
 }
 
 -(void)openInternal:(NSMutableArray *)inArguments {
+   
     NSLog(@"uexCamera==>>openInternal");
     isCompress = NO;
     if ([inArguments isKindOfClass:[NSMutableArray class]] && [inArguments count] > 0) {
@@ -68,16 +76,20 @@
             }
         }
     }
+    if (!self.cameraPickerController) {
+        
+        self.cameraPickerController = [[CameraPickerController alloc] init];
+    }
     
-    CameraPickerController *cameraPickerController = [[CameraPickerController alloc] init];
-    cameraPickerController.meBrwView = meBrwView;
-    cameraPickerController.uexObj = self;
-    cameraPickerController.scale = scale;
-    cameraPickerController.isCompress = isCompress;
+    self.cameraPickerController.meBrwView = meBrwView;
+    self.cameraPickerController.uexObj = self;
+    self.cameraPickerController.scale = scale;
+    self.cameraPickerController.isCompress = isCompress;
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-        [EUtility brwView:meBrwView presentModalViewController:cameraPickerController animated:YES];
+        [EUtility brwView:meBrwView presentModalViewController:self.cameraPickerController animated:YES];
     } else {
-        [EUtility brwView:meBrwView navigationPresentModalViewController:cameraPickerController animated:YES];
+        [EUtility brwView:meBrwView navigationPresentModalViewController:self.cameraPickerController animated:YES];
     }
     
 }
