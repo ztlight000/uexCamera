@@ -107,8 +107,6 @@
     
     for (AVCaptureDevice *device in devices) {
         
-        SCDLog(@"Device name: %@", [device localizedName]);
-        
         if ([device hasMediaType:AVMediaTypeVideo]) {
             
             if ([device position] == AVCaptureDevicePositionBack) {
@@ -194,14 +192,23 @@
     SCDLog(@"about to request a capture from: %@", _stillImageOutput);
     
     [_stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-        
+         NSLog(@"takePicture==>>error1=%@",error);
+        if (error || !imageDataSampleBuffer) {
+            NSLog(@"takePicture==>>error2=%@",error);
+            NSLog(@"takePicture==>>imageDataSampleBuffer=%@",imageDataSampleBuffer);
+            
+        }
         CFDictionaryRef exifAttachments = CMGetAttachment(imageDataSampleBuffer, kCGImagePropertyExifDictionary, NULL);
         if (exifAttachments) {
             SCDLog(@"attachements: %@", exifAttachments);
         } else {
             SCDLog(@"no attachments");
         }
-        NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+        NSData *imageData = nil;
+        if (!error) {
+            imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+        }
+        
         UIImage *image = [[UIImage alloc] initWithData:imageData];
         SCDLog(@"originImage:%@", [NSValue valueWithCGSize:image.size]);
         //        [SCCommon saveImageToPhotoAlbum:image];
@@ -233,9 +240,6 @@
             croppedImage = [croppedImage rotatedByDegrees:degree];
         }
         
-        //        self.imageView.image = croppedImage;
-        
-        //block、delegate、notification 3选1，传值
         if (block) {
             block(croppedImage);
         } else if ([_delegate respondsToSelector:@selector(didCapturePhoto:)]) {

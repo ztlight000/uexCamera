@@ -11,6 +11,7 @@
 #import "CameraDefines.h"
 #import "CameraCommon.h"
 #import "EUExCamera.h"
+#import "CameraPickerController.h"
 
 @interface CameraPostViewController : UIViewController
 

@@ -29,13 +29,18 @@
 #define LOW_ALPHA   0.7f
 #define HIGH_ALPHA  1.0f
 
+#define SC_CAMERA_WIDTH  SC_DEVICE_SIZE.width
+#define SC_CAMERA_HEIGHT  SC_DEVICE_SIZE.height
+
 @interface CameraPickerController () {
     int alphaTimes;
     CGPoint currTouchPoint;
-    BOOL isAfterCamera;
+    BOOL isFrontCamera;
     BOOL isFlashLight;
     UIButton *switchFlashBtn;
     UIButton *switchCameraBtn;
+    CGFloat cameraHeight;
+    CGFloat cameraWidth;
 }
 
 @property (nonatomic, strong) CameraCaptureSessionManager *captureManager;
@@ -50,6 +55,8 @@
 
 @property (nonatomic, strong) CameraSlider *cameraSlider;
 
+
+
 @end
 
 
@@ -61,8 +68,12 @@
     if (self) {
         alphaTimes = -1;
         currTouchPoint = CGPointZero;
-        isAfterCamera = YES;
+        isFrontCamera = NO;
         isFlashLight = NO;
+        self.isAction = NO;
+        cameraHeight = SC_CAMERA_HEIGHT > SC_CAMERA_WIDTH?SC_CAMERA_HEIGHT:SC_CAMERA_WIDTH;
+        cameraWidth = SC_CAMERA_HEIGHT > SC_CAMERA_WIDTH?SC_CAMERA_WIDTH:SC_CAMERA_HEIGHT;
+
     }
     return self;
 }
@@ -70,11 +81,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.closeCameraDelegate = self.uexObj;
+    
+    //notification
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationOrientationChange object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChange:) name:kNotificationOrientationChange object:nil];
+    
     CameraCaptureSessionManager *manager = [[CameraCaptureSessionManager alloc] init];
     
     //AvcaptureManager此处修改拍照预览区域的大小//
     if (CGRectEqualToRect(_previewRect, CGRectZero)) {
-        self.previewRect = CGRectMake(0, 22, SC_DEVICE_SIZE.width, SC_DEVICE_SIZE.height/4*3);
+        self.previewRect = CGRectMake(0, 22, cameraWidth, cameraHeight / 4 * 3);
     }
     [manager configureWithParentLayer:self.view previewRect:_previewRect];
     self.captureManager = manager;
@@ -86,6 +102,7 @@
     [self addPinchGesture];
     
     [_captureManager.session startRunning];
+    
     
 #if SWITCH_SHOW_DEFAULT_IMAGE_FOR_NONE_CAMERA
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -101,7 +118,7 @@
 //顶部标题
 - (void)addTopViewWithText:(NSString*)text {
     if (!_topContainerView) {
-        CGRect topFrame = CGRectMake(0, 0, SC_DEVICE_SIZE.width, CAMERA_TOPVIEW_HEIGHT * 1.5);
+        CGRect topFrame = CGRectMake(0, 0, cameraWidth, CAMERA_TOPVIEW_HEIGHT * 1.5);
         
         self.topContainerView = [[UIView alloc] initWithFrame:topFrame];
         self.topContainerView.backgroundColor = [UIColor clearColor];
@@ -113,7 +130,7 @@
         [_topContainerView addSubview:emptyView];
         
         topFrame.origin.x += 10;
-        switchCameraBtn = [[UIButton alloc] initWithFrame:CGRectMake(SC_DEVICE_SIZE.width-62, 0, 44, topFrame.size.height)];
+        switchCameraBtn = [[UIButton alloc] initWithFrame:CGRectMake(cameraWidth - 62, 0, 44, topFrame.size.height)];
         [switchCameraBtn setImage:[UIImage imageNamed:@"uexCamera/switch_camera.png"] forState:UIControlStateNormal];
         [switchCameraBtn addTarget:self action:@selector(switchCamera:) forControlEvents:UIControlEventTouchUpInside];
         [_topContainerView addSubview:switchCameraBtn];
@@ -130,9 +147,9 @@
 //拍照菜单栏
 - (void)addCameraMenuView {
     CGFloat cameraBtnLength = kCameraBtnWH;
-    CGRect cameraBtnFrame = CGRectMake((self.view.frame.size.width - cameraBtnLength) / 2, CGRectGetMaxY(self.view.frame) - kSpacing * 2 - cameraBtnLength , cameraBtnLength, cameraBtnLength);
+    CGRect cameraBtnFrame = CGRectMake((cameraWidth - cameraBtnLength) / 2, cameraHeight - kSpacing * 2 - cameraBtnLength , cameraBtnLength, cameraBtnLength);
     
-    _cameraMenuView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_previewRect), SC_DEVICE_SIZE.width, SC_DEVICE_SIZE.height - CGRectGetMaxY(_previewRect))];
+    _cameraMenuView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_previewRect), cameraWidth, cameraHeight - CGRectGetMaxY(_previewRect))];
     _cameraMenuView.backgroundColor = [UIColor blackColor];
     UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     CGPoint backCenterPoint = backBtn.center;
@@ -181,9 +198,14 @@
 }
 
 -(void)closeCamera{
+    if (self.isAction) {
+        return;
+    }
+    self.isAction = YES;
 //    [_closeCameraDelegate CloseCamera];
     [self dismissViewControllerAnimated:NO completion:^{
         NSLog(@"CameraPickerController==>>closeCamera==>>关闭openInternal相机");
+        [self performSelector:@selector(changeIsAction) withObject:nil afterDelay:0.5f];
     }];
 }
 
@@ -329,6 +351,12 @@ void c_slideAlpha() {
 #pragma mark -------------button actions---------------
 //拍照页面，拍照按钮
 - (void)takePictureBtnPressed:(UIButton*)sender {
+    
+    if (self.isAction) {
+        return;
+    }
+    self.isAction = YES;
+    
 #if SWITCH_SHOW_DEFAULT_IMAGE_FOR_NONE_CAMERA
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         //        [SVProgressHUD showErrorWithStatus:@"设备不支持拍照功能T_T"];
@@ -362,27 +390,36 @@ void c_slideAlpha() {
          
         });
         NSLog(@"拍照完成==>>stillImage=%@",stillImage);
-        CameraPostViewController *pc = [[CameraPostViewController alloc] init];
-        pc.postImage = stillImage;
-        pc.uexObj = _uexObj;
-        pc.quality = self.scale;
-        pc.isByOpenInternal = YES;
-        pc.isCompress = self.isCompress;
-        pc.closeCameraDelegate = self;
-        [self presentViewController:pc animated:YES completion:nil];
+        if (stillImage) {
+            CameraPostViewController *pc = [[CameraPostViewController alloc] init];
+            pc.postImage = stillImage;
+            pc.uexObj = _uexObj;
+            pc.quality = self.scale;
+            pc.isByOpenInternal = YES;
+            pc.isCompress = self.isCompress;
+            pc.closeCameraDelegate = self;
+            [self presentViewController:pc animated:YES completion:nil];
+
+        }
+        [self performSelector:@selector(changeIsAction) withObject:nil afterDelay:0.5f];
     }];
 }
 
 //拍照页面，切换前后摄像头按钮按钮
 - (void)switchCamera:(UIButton*)sender {
     
-    isAfterCamera = !isAfterCamera;
+    if (self.isAction) {
+        return;
+    }
+    self.isAction = YES;
     
-    NSString * result = [_captureManager switchCamera:[NSString stringWithFormat:@"%d",isAfterCamera]];
+    isFrontCamera = !isFrontCamera;
+    
+    NSString * result = [_captureManager switchCamera:[NSString stringWithFormat:@"%d",isFrontCamera]];
 
     NSString *imgStr = @"";
    
-    if (!isAfterCamera) {
+    if (isFrontCamera) {
     
         imgStr = @"uexCamera/switch_camera_h.png";
         
@@ -398,15 +435,27 @@ void c_slideAlpha() {
         [_uexObj jsSuccessWithName:@"uexCamera.cbOpenViewCamera" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
         
         NSLog(@"EUExCamera==>>submitBtnPressed==>>回调完成");
+        
+        [self performSelector:@selector(changeIsAction) withObject:nil afterDelay:0.5f];
+        
     }
     
 }
 
 //拍照页面，闪光灯按钮
 - (void)switchFlashButton:(UIButton*)sender {
-    
+    if (self.isAction) {
+        return;
+    }
+    self.isAction = YES;
     [_captureManager switchFlashButton:sender];
+    [self performSelector:@selector(changeIsAction) withObject:nil afterDelay:0.5f];
  
+}
+
+- (void)changeIsAction{
+
+    self.isAction = NO;
 }
 
 #pragma mark -------------pinch camera---------------
@@ -431,6 +480,41 @@ void c_slideAlpha() {
     }
 }
 
+#pragma mark ------------notification-------------
+- (void)orientationDidChange:(NSNotification*)noti {
+    
+    switchCameraBtn.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    switchFlashBtn.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    CGAffineTransform transform = CGAffineTransformMakeRotation(0);
+    switch ([UIDevice currentDevice].orientation) {
+        case UIDeviceOrientationPortrait://1
+        {
+            transform = CGAffineTransformMakeRotation(0);
+            break;
+        }
+        case UIDeviceOrientationPortraitUpsideDown://2
+        {
+            transform = CGAffineTransformMakeRotation(M_PI);
+            break;
+        }
+        case UIDeviceOrientationLandscapeLeft://3
+        {
+            transform = CGAffineTransformMakeRotation(M_PI_2);
+            break;
+        }
+        case UIDeviceOrientationLandscapeRight://4
+        {
+            transform = CGAffineTransformMakeRotation(-M_PI_2);
+            break;
+        }
+        default:
+            break;
+    }
+    [UIView animateWithDuration:0.3f animations:^{
+        switchCameraBtn.transform = transform;
+        switchFlashBtn.transform = transform;
+    }];
+}
 
 #pragma mark ---------rotate(only when this controller is presented, the code below effect)-------------
 //<iOS6
@@ -451,7 +535,7 @@ void c_slideAlpha() {
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAll;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
@@ -466,5 +550,6 @@ void c_slideAlpha() {
         NSLog(@"CameraPickerController==>>CloseCameraPicker==>>delegate关闭openInternal相机");
     }];
 }
+
 
 @end

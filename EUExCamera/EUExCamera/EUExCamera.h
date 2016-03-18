@@ -22,6 +22,7 @@
 }
 @property (nonatomic, strong) CameraCaptureCamera *captureCameraView;
 @property (nonatomic, strong) UIImagePickerController * imagePickerController;
+@property (nonatomic, strong) CameraPickerController * cameraPickerController;
 -(void)uexSuccessWithOpId:(int)inOpId dataType:(int)inDataType data:(NSString *)inData;
 - (void)removeViewCameraFromWindow;
 @end

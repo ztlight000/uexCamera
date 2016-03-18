@@ -12,7 +12,12 @@
 #import "CameraDefines.h"
 #import "CameraUtility.h"
 
-@interface CameraPostViewController ()
+
+
+@interface CameraPostViewController (){
+
+    CGSize lblSize;
+}
 
 @end
 
@@ -30,30 +35,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
-    [self setUpUI];
     [self addAddressViewWithText:_address];
+    [self setUpUI];
     
     if (!self.isByOpenInternal) {
        self.closeCameraDelegate = _uexObj;
     }
+    
 }
 
 //地理位置
 - (void)addAddressViewWithText:(NSString*)text {
     if (!_middleContainerView) {
         
-        CGRect middleFrame = CGRectMake(0, self.view.frame.size.height - kSpacing * 2 - 80, self.view.frame.size.width, 44);
+        _middleLbl = [[UILabel alloc] init];
+        _middleLbl.font = [UIFont systemFontOfSize:ADDRESS_FONT];
+        
+        CGFloat maxW = self.view.frame.size.width - POSITION_LEFT;
+        lblSize = [text sizeWithFont:_middleLbl.font constrainedToSize:CGSizeMake(maxW, MAXFLOAT)];
+        
+   
+        CGRect middleFrame = CGRectMake(0, self.view.frame.size.height - kSpacing * 2 - lblSize.height - POSITION_BOTTOM, self.view.frame.size.width, lblSize.height);
         UIView *mView = [[UIView alloc] initWithFrame:middleFrame];
         mView.backgroundColor = [UIColor clearColor];
         [self.view addSubview:mView];
         self.middleContainerView = mView;
-        
-        
-        _middleLbl = [[UILabel alloc] init];
-        _middleLbl.font = [UIFont systemFontOfSize:20.f];
-        CGSize lblSize = [text sizeWithFont:_middleLbl.font];
+
+        _middleLbl.numberOfLines = 0;
         _middleLbl.frame = CGRectMake((self.view.frame.size.width - lblSize.width) / 2, 0, lblSize.width, middleFrame.size.height);
         NSLog(@"x=%f,y=%f",_middleLbl.frame.origin.x,_middleLbl.frame.origin.y);
         _middleLbl.backgroundColor = [UIColor clearColor];
@@ -68,8 +77,8 @@
 - (void) setUpUI{
     
     self.view.backgroundColor = [UIColor lightGrayColor];
-    CGFloat imgViewWidth = self.view.frame.size.width - 50;
-    CGFloat imgViewX = 25;
+    CGFloat imgViewWidth = self.view.frame.size.width - POSITION_LEFT * 2;
+    CGFloat imgViewX = POSITION_LEFT;
     if (self.isByOpenInternal) {
         self.view.backgroundColor = [UIColor blackColor];
         imgViewWidth = self.view.frame.size.width;
@@ -80,13 +89,12 @@
         UIImageView *imgView = [[UIImageView alloc] initWithImage:_postImage];
         imgView.clipsToBounds = YES;
         imgView.contentMode = UIViewContentModeScaleAspectFill;
-        imgView.frame = CGRectMake(imgViewX, 50, imgViewWidth, self.view.frame.size.height - 150);
-        //        imgView.center = self.view.center;
+        imgView.frame = CGRectMake(imgViewX, POSITION_TOP, imgViewWidth, self.view.frame.size.height - lblSize.height - POSITION_BOTTOM * 3);
         [self.view addSubview:imgView];
     }
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(10, self.view.frame.size.height - 50, 80, 30);
+    backBtn.frame = CGRectMake(BUTTON_X, self.view.frame.size.height - POSITION_TOP, BUTTON_WIDTH, BUTTON_HEIGHT);
     [backBtn setTitle:@"重拍" forState:UIControlStateNormal];
     backBtn.backgroundColor = [UIColor whiteColor];
     [backBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -95,7 +103,7 @@
     
     
     UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    submitBtn.frame = CGRectMake(self.view.frame.size.width - 90, self.view.frame.size.height - 50, 80, 30);
+    submitBtn.frame = CGRectMake(self.view.frame.size.width - BUTTON_X - BUTTON_WIDTH, self.view.frame.size.height - POSITION_TOP, BUTTON_WIDTH, BUTTON_HEIGHT);
     NSLog(@"frame=%f",submitBtn.frame.origin.x);
     [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
     submitBtn.backgroundColor = [UIColor whiteColor];
@@ -115,11 +123,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 - (void)backBtnPressed:(id)sender {
-    
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -209,5 +217,27 @@
         [self.uexObj jsFailedWithOpId:0 errorCode:1030105 errorDes:UEX_ERROR_DESCRIBE_FILE_SAVE];
     }
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    
+    return (toInterfaceOrientation == UIInterfaceOrientationPortrait);
+    
+}
+
+- (BOOL)shouldAutorotate
+{
+    
+    return NO;
+    
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    
+    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
+    
+}
+
 
 @end

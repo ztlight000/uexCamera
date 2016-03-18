@@ -82,8 +82,7 @@
     
 #if SWITCH_SHOW_DEFAULT_IMAGE_FOR_NONE_CAMERA
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        //        [SVProgressHUD showErrorWithStatus:@"设备不支持拍照功能T_T"];
-        
+
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, CAMERA_TOPVIEW_HEIGHT, self.frame.size.width, self.frame.size.width)];
         imgView.clipsToBounds = YES;
         imgView.contentMode = UIViewContentModeScaleAspectFill;
@@ -99,17 +98,21 @@
 - (void)addAddressViewWithText:(NSString*)text {
     if (!_middleContainerView) {
         
-        CGRect middleFrame = CGRectMake(0, CGRectGetMaxY(self.frame) - kSpacing * 2 - kCameraBtnWH - 44, self.frame.size.width, 44);
+        _middleLbl = [[UILabel alloc] init];
+        _middleLbl.font = [UIFont systemFontOfSize:ADDRESS_FONT];
+        
+        CGFloat maxW = self.frame.size.width - POSITION_LEFT;
+        CGSize lblSize = [text sizeWithFont:_middleLbl.font constrainedToSize:CGSizeMake(maxW, MAXFLOAT)];
+        
+        CGRect middleFrame = CGRectMake(0, CGRectGetMaxY(self.frame) - kSpacing * 2 - kCameraBtnWH - lblSize.height, self.frame.size.width, lblSize.height);
         UIView *mView = [[UIView alloc] initWithFrame:middleFrame];
         mView.backgroundColor = [UIColor clearColor];
         [self addSubview:mView];
         self.middleContainerView = mView;
         
-        
-        _middleLbl = [[UILabel alloc] init];
-        _middleLbl.font = [UIFont systemFontOfSize:20.f];
-        CGSize lblSize = [text sizeWithFont:_middleLbl.font];
-        _middleLbl.frame = CGRectMake((self.frame.size.width - lblSize.width) / 2, 0, lblSize.width, middleFrame.size.height);
+        _middleLbl.numberOfLines = 0;
+        _middleLbl.frame = CGRectMake((self.frame.size.width - lblSize.width) / 2, 0, lblSize.width, lblSize.height);
+
         NSLog(@"x=%f,y=%f",_middleLbl.frame.origin.x,_middleLbl.frame.origin.y);
         _middleLbl.backgroundColor = [UIColor clearColor];
         _middleLbl.textColor = [UIColor blackColor];
@@ -232,8 +235,6 @@ void c_slideAlpha() {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:ADJUSTINT_FOCUS]) {
         BOOL isAdjustingFocus = [[change objectForKey:NSKeyValueChangeNewKey] isEqualToNumber:[NSNumber numberWithInt:1] ];
-        //        SCDLog(@"Is adjusting focus? %@", isAdjustingFocus ? @"YES" : @"NO" );
-        //        SCDLog(@"Change dictionary: %@", change);
         if (!isAdjustingFocus) {
             alphaTimes = -1;
         }
@@ -300,6 +301,7 @@ void c_slideAlpha() {
 #pragma mark -------------button actions---------------
 //拍照页面，拍照按钮
 - (void)takePictureBtnPressed:(UIButton*)sender {
+    
 #if SWITCH_SHOW_DEFAULT_IMAGE_FOR_NONE_CAMERA
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         //        [SVProgressHUD showErrorWithStatus:@"设备不支持拍照功能T_T"];
@@ -418,6 +420,7 @@ void c_slideAlpha() {
 - (BOOL)shouldAutorotate
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOrientationChange object:nil];
+    
     return NO;
 }
 
@@ -428,7 +431,7 @@ void c_slideAlpha() {
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    //    return [UIApplication sharedApplication].statusBarOrientation;
+  
     return UIInterfaceOrientationPortrait;
 }
 #endif

@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		5AA8D54B188F9DBB00C854BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8D54A188F9DBB00C854BC /* Foundation.framework */; };
 		5AA8D552188F9DBB00C854BC /* EUExCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8D551188F9DBB00C854BC /* EUExCamera.m */; };
-		D75F5EB01C6046B600F480FA /* CameraUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EAF1C6046B600F480FA /* CameraUtility.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EDD1C604CE500F480FA /* CameraCaptureCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC31C604CE500F480FA /* CameraCaptureCamera.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EDE1C604CE500F480FA /* CameraCaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC51C604CE500F480FA /* CameraCaptureSessionManager.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EDF1C604CE500F480FA /* CameraSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC71C604CE500F480FA /* CameraSlider.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EE01C604CE500F480FA /* UIImage+CameraResize.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC91C604CE500F480FA /* UIImage+CameraResize.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EE11C604CE500F480FA /* CameraCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ECC1C604CE500F480FA /* CameraCommon.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EE21C604CE500F480FA /* CameraPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ED01C604CE500F480FA /* CameraPickerController.m */; settings = {ASSET_TAGS = (); }; };
-		D75F5EE31C604CE500F480FA /* CameraPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D75F5EB01C6046B600F480FA /* CameraUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EAF1C6046B600F480FA /* CameraUtility.m */; };
+		D75F5EDD1C604CE500F480FA /* CameraCaptureCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC31C604CE500F480FA /* CameraCaptureCamera.m */; };
+		D75F5EDE1C604CE500F480FA /* CameraCaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC51C604CE500F480FA /* CameraCaptureSessionManager.m */; };
+		D75F5EDF1C604CE500F480FA /* CameraSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC71C604CE500F480FA /* CameraSlider.m */; };
+		D75F5EE01C604CE500F480FA /* UIImage+CameraResize.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EC91C604CE500F480FA /* UIImage+CameraResize.m */; };
+		D75F5EE11C604CE500F480FA /* CameraCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ECC1C604CE500F480FA /* CameraCommon.m */; };
+		D75F5EE21C604CE500F480FA /* CameraPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ED01C604CE500F480FA /* CameraPickerController.m */; };
+		D75F5EE31C604CE500F480FA /* CameraPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -145,7 +145,6 @@
 			children = (
 				D75F5EC11C604CE500F480FA /* CameraCaptureCamera */,
 				D75F5ECA1C604CE500F480FA /* CameraCommon */,
-				D75F5ECE1C604CE500F480FA /* CameraPickerController */,
 				D75F5ED11C604CE500F480FA /* JSON */,
 				D75F5EDA1C604CE500F480FA /* Post */,
 			);
@@ -170,6 +169,7 @@
 		D75F5ECA1C604CE500F480FA /* CameraCommon */ = {
 			isa = PBXGroup;
 			children = (
+				D75F5ECE1C604CE500F480FA /* CameraPickerController */,
 				D75F5ECB1C604CE500F480FA /* CameraCommon.h */,
 				D75F5ECC1C604CE500F480FA /* CameraCommon.m */,
 				D75F5ECD1C604CE500F480FA /* CameraDefines.h */,
@@ -183,7 +183,8 @@
 				D75F5ECF1C604CE500F480FA /* CameraPickerController.h */,
 				D75F5ED01C604CE500F480FA /* CameraPickerController.m */,
 			);
-			path = CameraPickerController;
+			name = CameraPickerController;
+			path = ../CameraPickerController;
 			sourceTree = "<group>";
 		};
 		D75F5ED11C604CE500F480FA /* JSON */ = {
