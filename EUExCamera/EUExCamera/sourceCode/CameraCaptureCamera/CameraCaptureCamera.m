@@ -207,10 +207,6 @@
     self.cameraSlider = slider;
 }
 
-void c_slideAlpha() {
-    
-}
-
 - (void)setSliderAlpha:(BOOL)isTouchEnd {
     if (_cameraSlider) {
         _cameraSlider.isSliding = !isTouchEnd;
