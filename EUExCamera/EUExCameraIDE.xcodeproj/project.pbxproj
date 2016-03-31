@@ -15,6 +15,7 @@
 		3D54EE0B6D35BADB033ADCEA /* CFNetWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC8D78C34EA02FDDB28C7B7 /* CFNetWork.framework */; };
 		5AA8D54B188F9DBB00C854BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8D54A188F9DBB00C854BC /* Foundation.framework */; };
 		5AA8D552188F9DBB00C854BC /* EUExCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8D551188F9DBB00C854BC /* EUExCamera.m */; };
+		5B3C1CEA1CAD1CB400CC5C6B /* AppCanEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B3C1CE91CAD1CB400CC5C6B /* AppCanEngine.framework */; };
 		903840576CAD0C895D0D40DC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EE230BBE9C02F0F99E91E4 /* ImageIO.framework */; };
 		9481329C35CC77C0D8CBD8D6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 084E457C0832D94EE5E51850 /* libz.tbd */; };
 		A2DA7F8D0DDCDAE186750BED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 965B7C18F913B066AF4A7E02 /* SystemConfiguration.framework */; };
@@ -22,8 +23,7 @@
 		AAE7F325BCDA9B111ADD4D90 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BD54B39624E5530DEB05AE99 /* libstdc++.tbd */; };
 		B26638D8ABF88D864FA5BD9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B4F0108A2A01C7D080034F /* CoreGraphics.framework */; };
 		C6828F4566A3E7F5756D680B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C12A58DC6D3231AEF856DE9 /* MapKit.framework */; };
-		D7A5505C1CACFA2F00AA06A4 /* CameraUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A5505B1CACFA2F00AA06A4 /* CameraUtility.m */; settings = {ASSET_TAGS = (); }; };
-		D7A5506A1CAD028B00AA06A4 /* AppCanEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A550691CAD028B00AA06A4 /* AppCanEngine.framework */; settings = {ASSET_TAGS = (); }; };
+		D7A5505C1CACFA2F00AA06A4 /* CameraUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A5505B1CACFA2F00AA06A4 /* CameraUtility.m */; };
 		D7A5506D1CAD040D00AA06A4 /* CameraCaptureCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A550401CACF9EB00AA06A4 /* CameraCaptureCamera.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D7A5506E1CAD040D00AA06A4 /* CameraCaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A550421CACF9EB00AA06A4 /* CameraCaptureSessionManager.m */; };
 		D7A5506F1CAD040D00AA06A4 /* CameraSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A550441CACF9EB00AA06A4 /* CameraSlider.m */; };
@@ -61,6 +61,7 @@
 		5AA8D572188F9E2B00C854BC /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		5AA8D573188F9E2B00C854BC /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		5AB22B80C679712B2CC4BD9F /* MobileCoreServices.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5B3C1CE91CAD1CB400CC5C6B /* AppCanEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCanEngine.framework; path = "../../AppCanPluginTools-iOS/resource/IDEPluginProjectPackageResource/AppCanEngine.framework"; sourceTree = "<group>"; };
 		5C78076DD7581F5C465E1C2C /* libsqlite3.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = archive.ar; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6C12A58DC6D3231AEF856DE9 /* MapKit.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		7115822974975B78D3BBF879 /* UIKit.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -93,7 +94,6 @@
 		D7A550591CACF9EB00AA06A4 /* CameraPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraPostViewController.m; sourceTree = "<group>"; };
 		D7A5505A1CACFA2F00AA06A4 /* CameraUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtility.h; sourceTree = "<group>"; };
 		D7A5505B1CACFA2F00AA06A4 /* CameraUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraUtility.m; sourceTree = "<group>"; };
-		D7A550691CAD028B00AA06A4 /* AppCanEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanEngine.framework; sourceTree = "<group>"; };
 		D7A5506B1CAD029000AA06A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,7 +109,7 @@
 				903840576CAD0C895D0D40DC /* ImageIO.framework in Frameworks */,
 				3D54EE0B6D35BADB033ADCEA /* CFNetWork.framework in Frameworks */,
 				3144F7B6733FFD3F3F3269DE /* MobileCoreServices.framework in Frameworks */,
-				D7A5506A1CAD028B00AA06A4 /* AppCanEngine.framework in Frameworks */,
+				5B3C1CEA1CAD1CB400CC5C6B /* AppCanEngine.framework in Frameworks */,
 				06117F00561DF17C6E1A1FB6 /* UIKit.framework in Frameworks */,
 				B26638D8ABF88D864FA5BD9B /* CoreGraphics.framework in Frameworks */,
 				A7E4F0B0C3887D4B9DBB604C /* QuartzCore.framework in Frameworks */,
@@ -146,8 +146,8 @@
 		5AA8D53E188F9DBB00C854BC = {
 			isa = PBXGroup;
 			children = (
+				5B3C1CE91CAD1CB400CC5C6B /* AppCanEngine.framework */,
 				D7A5506B1CAD029000AA06A4 /* Info.plist */,
-				D7A550691CAD028B00AA06A4 /* AppCanEngine.framework */,
 				5AA8D54C188F9DBB00C854BC /* EUExCamera */,
 				5AA8D549188F9DBB00C854BC /* Frameworks */,
 				5AA8D548188F9DBB00C854BC /* Products */,
@@ -420,7 +420,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_IDENTIFIER = com.appcan.ide;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jun wei (MW5H93XK8W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Sea King Biological Technology Co., Ltd.";
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/IDE/";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -447,7 +447,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexCamera;
-				PROVISIONING_PROFILE = "f1af2cbf-a14b-4078-b414-56f6d4f5bce3";
+				PROVISIONING_PROFILE = "756a3ff2-be53-4d08-862a-c050d0dfa3d9";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
@@ -458,7 +458,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				BUNDLE_IDENTIFIER = com.appcan.ide;
-				CODE_SIGN_IDENTITY = "iPhone Developer: jun wei (MW5H93XK8W)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Sea King Biological Technology Co., Ltd.";
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/IDE/";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -485,7 +485,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = uexCamera;
-				PROVISIONING_PROFILE = "f1af2cbf-a14b-4078-b414-56f6d4f5bce3";
+				PROVISIONING_PROFILE = "756a3ff2-be53-4d08-862a-c050d0dfa3d9";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
