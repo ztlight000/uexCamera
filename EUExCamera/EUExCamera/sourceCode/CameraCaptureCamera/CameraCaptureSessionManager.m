@@ -10,6 +10,7 @@
 #import <ImageIO/ImageIO.h>
 #import "UIImage+CameraResize.h"
 #import "CameraCommon.h"
+#import "CameraInternationalization.h"
 
 @interface CameraCaptureSessionManager ()
 
@@ -360,7 +361,7 @@
 - (NSString *)switchFlashMode:(NSString *)flashMode {
     Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
     if (!captureDeviceClass) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"您的设备没有拍照功能" delegate:nil cancelButtonTitle:NSLocalizedString(@"Sure", nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kInternationalization(@"prompt") message:kInternationalization(@"noCamera") delegate:nil cancelButtonTitle:NSLocalizedString(@"Sure", nil) otherButtonTitles: nil];
         [alert show];
         return @"-1";
     }
@@ -380,7 +381,7 @@
         }
         
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"您的设备没有闪光灯功能" delegate:nil cancelButtonTitle:@"噢T_T" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kInternationalization(@"prompt") message:kInternationalization(@"noFlash") delegate:nil cancelButtonTitle:kInternationalization(@"cancel") otherButtonTitles: nil];
         [alert show];
         return @"-1";
     }
@@ -392,7 +393,7 @@
     
     Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
     if (!captureDeviceClass) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"您的设备没有拍照功能" delegate:nil cancelButtonTitle:NSLocalizedString(@"Sure", nil) otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kInternationalization(@"prompt") message:kInternationalization(@"noCamera") delegate:nil cancelButtonTitle:NSLocalizedString(@"Sure", nil) otherButtonTitles: nil];
         [alert show];
         return;
     }
@@ -406,25 +407,25 @@
         //        } else {
         if (device.flashMode == AVCaptureFlashModeOff) {
             device.flashMode = AVCaptureFlashModeOn;
-            imgStr = @"uexCamera/flashing_on.png";
+            imgStr = @"flashing_on";
             
         } else if (device.flashMode == AVCaptureFlashModeOn) {
             device.flashMode = AVCaptureFlashModeAuto;
-            imgStr = @"uexCamera/flashing_auto.png";
+            imgStr = @"flashing_auto";
             
         } else if (device.flashMode == AVCaptureFlashModeAuto) {
             device.flashMode = AVCaptureFlashModeOff;
-            imgStr = @"uexCamera/flashing_off.png";
+            imgStr = @"flashing_off";
             
         }
         //        }
         
         if (sender) {
-            [sender setImage:[UIImage imageNamed:imgStr] forState:UIControlStateNormal];
+            [sender setImage:[CameraInternationalization getImageFromLocalFile:imgStr type:@"png"] forState:UIControlStateNormal];
         }
         
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"您的设备没有闪光灯功能" delegate:nil cancelButtonTitle:@"噢T_T" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kInternationalization(@"prompt") message:kInternationalization(@"noFlash") delegate:nil cancelButtonTitle:kInternationalization(@"cancel") otherButtonTitles: nil];
         [alert show];
     }
     [device unlockForConfiguration];

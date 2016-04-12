@@ -17,7 +17,34 @@
 		D75F5EE11C604CE500F480FA /* CameraCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ECC1C604CE500F480FA /* CameraCommon.m */; };
 		D75F5EE21C604CE500F480FA /* CameraPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5ED01C604CE500F480FA /* CameraPickerController.m */; };
 		D75F5EE31C604CE500F480FA /* CameraPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */; };
+		D77673E91CBCAA4500D51CF2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673DA1CBCAA4500D51CF2 /* Default.png */; };
+		D77673EA1CBCAA4500D51CF2 /* flashing_auto.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673DB1CBCAA4500D51CF2 /* flashing_auto.png */; };
+		D77673EB1CBCAA4500D51CF2 /* flashing_auto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673DC1CBCAA4500D51CF2 /* flashing_auto@2x.png */; };
+		D77673EC1CBCAA4500D51CF2 /* flashing_off.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673DD1CBCAA4500D51CF2 /* flashing_off.png */; };
+		D77673ED1CBCAA4500D51CF2 /* flashing_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673DE1CBCAA4500D51CF2 /* flashing_off@2x.png */; };
+		D77673EE1CBCAA4500D51CF2 /* flashing_on.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673DF1CBCAA4500D51CF2 /* flashing_on.png */; };
+		D77673EF1CBCAA4500D51CF2 /* flashing_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E01CBCAA4500D51CF2 /* flashing_on@2x.png */; };
+		D77673F01CBCAA4500D51CF2 /* plugin_camera_bt_takepic_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E11CBCAA4500D51CF2 /* plugin_camera_bt_takepic_normal.png */; };
+		D77673F11CBCAA4500D51CF2 /* plugin_camera_bt_takepic_on.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E21CBCAA4500D51CF2 /* plugin_camera_bt_takepic_on.png */; };
+		D77673F21CBCAA4500D51CF2 /* switch_camera_h.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E31CBCAA4500D51CF2 /* switch_camera_h.png */; };
+		D77673F31CBCAA4500D51CF2 /* switch_camera_h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E41CBCAA4500D51CF2 /* switch_camera_h@2x.png */; };
+		D77673F41CBCAA4500D51CF2 /* switch_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E51CBCAA4500D51CF2 /* switch_camera.png */; };
+		D77673F51CBCAA4500D51CF2 /* switch_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E61CBCAA4500D51CF2 /* switch_camera@2x.png */; };
+		D77673F61CBCAA4500D51CF2 /* touch_focus_x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E71CBCAA4500D51CF2 /* touch_focus_x.png */; };
+		D77673F71CBCAA4500D51CF2 /* touch_focus_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D77673E81CBCAA4500D51CF2 /* touch_focus_x@2x.png */; };
+		D77673FA1CBCAB0400D51CF2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D77673FC1CBCAB0400D51CF2 /* Localizable.strings */; };
+		D77674001CBCC52B00D51CF2 /* CameraInternationalization.m in Sources */ = {isa = PBXBuildFile; fileRef = D77673FF1CBCC52B00D51CF2 /* CameraInternationalization.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D77673D81CBCAA0D00D51CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5AA8D53F188F9DBB00C854BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D77673CF1CBCA96700D51CF2;
+			remoteInfo = uexCameraBundle;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5AA8D545188F9DBB00C854BC /* CopyFiles */ = {
@@ -67,6 +94,26 @@
 		D75F5ED91C604CE500F480FA /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		D75F5EDB1C604CE500F480FA /* CameraPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPostViewController.h; sourceTree = "<group>"; };
 		D75F5EDC1C604CE500F480FA /* CameraPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPostViewController.m; sourceTree = "<group>"; };
+		D77673D01CBCA96700D51CF2 /* uexCamera.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = uexCamera.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D77673DA1CBCAA4500D51CF2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D77673DB1CBCAA4500D51CF2 /* flashing_auto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashing_auto.png; sourceTree = "<group>"; };
+		D77673DC1CBCAA4500D51CF2 /* flashing_auto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashing_auto@2x.png"; sourceTree = "<group>"; };
+		D77673DD1CBCAA4500D51CF2 /* flashing_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashing_off.png; sourceTree = "<group>"; };
+		D77673DE1CBCAA4500D51CF2 /* flashing_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashing_off@2x.png"; sourceTree = "<group>"; };
+		D77673DF1CBCAA4500D51CF2 /* flashing_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashing_on.png; sourceTree = "<group>"; };
+		D77673E01CBCAA4500D51CF2 /* flashing_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashing_on@2x.png"; sourceTree = "<group>"; };
+		D77673E11CBCAA4500D51CF2 /* plugin_camera_bt_takepic_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plugin_camera_bt_takepic_normal.png; sourceTree = "<group>"; };
+		D77673E21CBCAA4500D51CF2 /* plugin_camera_bt_takepic_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plugin_camera_bt_takepic_on.png; sourceTree = "<group>"; };
+		D77673E31CBCAA4500D51CF2 /* switch_camera_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_camera_h.png; sourceTree = "<group>"; };
+		D77673E41CBCAA4500D51CF2 /* switch_camera_h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_camera_h@2x.png"; sourceTree = "<group>"; };
+		D77673E51CBCAA4500D51CF2 /* switch_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_camera.png; sourceTree = "<group>"; };
+		D77673E61CBCAA4500D51CF2 /* switch_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "switch_camera@2x.png"; sourceTree = "<group>"; };
+		D77673E71CBCAA4500D51CF2 /* touch_focus_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touch_focus_x.png; sourceTree = "<group>"; };
+		D77673E81CBCAA4500D51CF2 /* touch_focus_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "touch_focus_x@2x.png"; sourceTree = "<group>"; };
+		D77673FB1CBCAB0400D51CF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D77673FD1CBCAB3000D51CF2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D77673FE1CBCC52B00D51CF2 /* CameraInternationalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraInternationalization.h; sourceTree = "<group>"; };
+		D77673FF1CBCC52B00D51CF2 /* CameraInternationalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraInternationalization.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +125,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D77673CD1CBCA96700D51CF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA8D54C188F9DBB00C854BC /* EUExCamera */,
+				D77673D11CBCA96700D51CF2 /* uexCameraBundle */,
 				5AA8D549188F9DBB00C854BC /* Frameworks */,
 				5AA8D548188F9DBB00C854BC /* Products */,
 			);
@@ -94,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA8D547188F9DBB00C854BC /* libuexCamera.a */,
+				D77673D01CBCA96700D51CF2 /* uexCamera.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				D75F5EC11C604CE500F480FA /* CameraCaptureCamera */,
+				D75F5ECE1C604CE500F480FA /* CameraPickerController */,
 				D75F5ECA1C604CE500F480FA /* CameraCommon */,
 				D75F5ED11C604CE500F480FA /* JSON */,
 				D75F5EDA1C604CE500F480FA /* Post */,
@@ -169,7 +226,8 @@
 		D75F5ECA1C604CE500F480FA /* CameraCommon */ = {
 			isa = PBXGroup;
 			children = (
-				D75F5ECE1C604CE500F480FA /* CameraPickerController */,
+				D77673FE1CBCC52B00D51CF2 /* CameraInternationalization.h */,
+				D77673FF1CBCC52B00D51CF2 /* CameraInternationalization.m */,
 				D75F5ECB1C604CE500F480FA /* CameraCommon.h */,
 				D75F5ECC1C604CE500F480FA /* CameraCommon.m */,
 				D75F5ECD1C604CE500F480FA /* CameraDefines.h */,
@@ -183,8 +241,7 @@
 				D75F5ECF1C604CE500F480FA /* CameraPickerController.h */,
 				D75F5ED01C604CE500F480FA /* CameraPickerController.m */,
 			);
-			name = CameraPickerController;
-			path = ../CameraPickerController;
+			path = CameraPickerController;
 			sourceTree = "<group>";
 		};
 		D75F5ED11C604CE500F480FA /* JSON */ = {
@@ -211,6 +268,29 @@
 			path = Post;
 			sourceTree = "<group>";
 		};
+		D77673D11CBCA96700D51CF2 /* uexCameraBundle */ = {
+			isa = PBXGroup;
+			children = (
+				D77673DA1CBCAA4500D51CF2 /* Default.png */,
+				D77673DB1CBCAA4500D51CF2 /* flashing_auto.png */,
+				D77673DC1CBCAA4500D51CF2 /* flashing_auto@2x.png */,
+				D77673DD1CBCAA4500D51CF2 /* flashing_off.png */,
+				D77673DE1CBCAA4500D51CF2 /* flashing_off@2x.png */,
+				D77673DF1CBCAA4500D51CF2 /* flashing_on.png */,
+				D77673E01CBCAA4500D51CF2 /* flashing_on@2x.png */,
+				D77673E11CBCAA4500D51CF2 /* plugin_camera_bt_takepic_normal.png */,
+				D77673E21CBCAA4500D51CF2 /* plugin_camera_bt_takepic_on.png */,
+				D77673E31CBCAA4500D51CF2 /* switch_camera_h.png */,
+				D77673E41CBCAA4500D51CF2 /* switch_camera_h@2x.png */,
+				D77673E51CBCAA4500D51CF2 /* switch_camera.png */,
+				D77673E61CBCAA4500D51CF2 /* switch_camera@2x.png */,
+				D77673E71CBCAA4500D51CF2 /* touch_focus_x.png */,
+				D77673E81CBCAA4500D51CF2 /* touch_focus_x@2x.png */,
+				D77673FC1CBCAB0400D51CF2 /* Localizable.strings */,
+			);
+			path = uexCameraBundle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,11 +305,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				D77673D91CBCAA0D00D51CF2 /* PBXTargetDependency */,
 			);
 			name = EUExCamera;
 			productName = EUExCamera;
 			productReference = 5AA8D547188F9DBB00C854BC /* libuexCamera.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		D77673CF1CBCA96700D51CF2 /* uexCameraBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D77673D51CBCA96700D51CF2 /* Build configuration list for PBXNativeTarget "uexCameraBundle" */;
+			buildPhases = (
+				D77673CC1CBCA96700D51CF2 /* Sources */,
+				D77673CD1CBCA96700D51CF2 /* Frameworks */,
+				D77673CE1CBCA96700D51CF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = uexCameraBundle;
+			productName = uexCameraBundle;
+			productReference = D77673D01CBCA96700D51CF2 /* uexCamera.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -239,6 +337,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = xll;
+				TargetAttributes = {
+					D77673CF1CBCA96700D51CF2 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
 			};
 			buildConfigurationList = 5AA8D542188F9DBB00C854BC /* Build configuration list for PBXProject "EUExCamera" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -246,6 +349,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 5AA8D53E188F9DBB00C854BC;
 			productRefGroup = 5AA8D548188F9DBB00C854BC /* Products */;
@@ -253,9 +357,36 @@
 			projectRoot = "";
 			targets = (
 				5AA8D546188F9DBB00C854BC /* EUExCamera */,
+				D77673CF1CBCA96700D51CF2 /* uexCameraBundle */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D77673CE1CBCA96700D51CF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D77673EE1CBCAA4500D51CF2 /* flashing_on.png in Resources */,
+				D77673EA1CBCAA4500D51CF2 /* flashing_auto.png in Resources */,
+				D77673F01CBCAA4500D51CF2 /* plugin_camera_bt_takepic_normal.png in Resources */,
+				D77673F71CBCAA4500D51CF2 /* touch_focus_x@2x.png in Resources */,
+				D77673ED1CBCAA4500D51CF2 /* flashing_off@2x.png in Resources */,
+				D77673EC1CBCAA4500D51CF2 /* flashing_off.png in Resources */,
+				D77673F21CBCAA4500D51CF2 /* switch_camera_h.png in Resources */,
+				D77673F41CBCAA4500D51CF2 /* switch_camera.png in Resources */,
+				D77673EB1CBCAA4500D51CF2 /* flashing_auto@2x.png in Resources */,
+				D77673F11CBCAA4500D51CF2 /* plugin_camera_bt_takepic_on.png in Resources */,
+				D77673E91CBCAA4500D51CF2 /* Default.png in Resources */,
+				D77673EF1CBCAA4500D51CF2 /* flashing_on@2x.png in Resources */,
+				D77673F61CBCAA4500D51CF2 /* touch_focus_x.png in Resources */,
+				D77673FA1CBCAB0400D51CF2 /* Localizable.strings in Resources */,
+				D77673F51CBCAA4500D51CF2 /* switch_camera@2x.png in Resources */,
+				D77673F31CBCAA4500D51CF2 /* switch_camera_h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5AA8D543188F9DBB00C854BC /* Sources */ = {
@@ -266,6 +397,7 @@
 				D75F5EDE1C604CE500F480FA /* CameraCaptureSessionManager.m in Sources */,
 				D75F5EE01C604CE500F480FA /* UIImage+CameraResize.m in Sources */,
 				5AA8D552188F9DBB00C854BC /* EUExCamera.m in Sources */,
+				D77674001CBCC52B00D51CF2 /* CameraInternationalization.m in Sources */,
 				D75F5EE31C604CE500F480FA /* CameraPostViewController.m in Sources */,
 				D75F5EE11C604CE500F480FA /* CameraCommon.m in Sources */,
 				D75F5EDD1C604CE500F480FA /* CameraCaptureCamera.m in Sources */,
@@ -274,7 +406,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D77673CC1CBCA96700D51CF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D77673D91CBCAA0D00D51CF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D77673CF1CBCA96700D51CF2 /* uexCameraBundle */;
+			targetProxy = D77673D81CBCAA0D00D51CF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D77673FC1CBCAB0400D51CF2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D77673FB1CBCAB0400D51CF2 /* en */,
+				D77673FD1CBCAB3000D51CF2 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5AA8D568188F9DBB00C854BC /* Debug */ = {
@@ -294,6 +453,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -332,6 +492,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -379,6 +540,60 @@
 			};
 			name = Release;
 		};
+		D77673D31CBCA96700D51CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = No;
+				CONFIGURATION_BUILD_DIR = $SRCROOT/uexCamera;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zywx.uexCameraBundle;
+				PRODUCT_MODULE_NAME = uexCamera;
+				PRODUCT_NAME = uexCamera;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		D77673D41CBCA96700D51CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = No;
+				CONFIGURATION_BUILD_DIR = $SRCROOT/uexCamera;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zywx.uexCameraBundle;
+				PRODUCT_MODULE_NAME = uexCamera;
+				PRODUCT_NAME = uexCamera;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -396,6 +611,15 @@
 			buildConfigurations = (
 				5AA8D56B188F9DBB00C854BC /* Debug */,
 				5AA8D56C188F9DBB00C854BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D77673D51CBCA96700D51CF2 /* Build configuration list for PBXNativeTarget "uexCameraBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D77673D31CBCA96700D51CF2 /* Debug */,
+				D77673D41CBCA96700D51CF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
