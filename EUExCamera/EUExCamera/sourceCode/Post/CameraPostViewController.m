@@ -150,8 +150,8 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:filePath forKey:@"photoPath"];
     [dict setValue:_address forKey:@"location"];
-    SBJSON *jsonParser = [[SBJSON alloc]init];
-    NSString *jsonString = [jsonParser stringWithObject:dict];
+    [dict setValue:_address forKey:@"label"];
+    NSString *jsonString = [dict JSONFragment];
     NSLog(@"回调json串------》》》》%@",jsonString);
     [_closeCameraDelegate CloseCamera];
     if (_uexObj) {
