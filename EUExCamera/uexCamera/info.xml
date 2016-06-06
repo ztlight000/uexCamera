@@ -2,7 +2,7 @@
 <uexplugins>
     <plugin
         uexName="uexCamera" version="4.0.0" build="9">
-         <info>9:支持引擎4.0</info>
+        <info>9:支持引擎4.0</info>
         <build>8:cbOpenViewCamera回调方法,返回的JSON中增加字段label,替换之前的location</build>
         <build>7:创建bundle存储资源文件，适配国际化</build>
         <build>6:修改IDE</build>
