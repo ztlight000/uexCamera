@@ -20,10 +20,10 @@
 @property (nonatomic, assign) EBrowserView *meBrwView;
 @property (nonatomic, weak) EUExCamera *uexObj;
 @property (nonatomic, assign) CGFloat quality;
-
+@property (nonatomic, strong) ACJSFunctionRef *funcOpen;
 -(void)setUpUI;
-- (void)switchCamera:(NSString *)cameraPosition;
-- (void)switchFlashMode:(NSString *)flashMode;
+- (NSString*)switchCamera:(NSString *)cameraPosition;
+- (NSString*)switchFlashMode:(NSString *)flashMode;
 
 
 @end

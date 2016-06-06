@@ -5,7 +5,7 @@
 //  Created by AppCan on 11-8-26.
 //  Copyright 2011 AppCan. All rights reserved.
 
-#import "EUExBase.h"
+
 
 
 @class CameraCaptureCamera;
@@ -24,5 +24,4 @@
 @property (nonatomic, strong) UIImagePickerController * imagePickerController;
 @property (nonatomic, strong) CameraPickerController * cameraPickerController;
 -(void)uexSuccessWithOpId:(int)inOpId dataType:(int)inDataType data:(NSString *)inData;
-- (void)removeViewCameraFromWindow;
 @end
