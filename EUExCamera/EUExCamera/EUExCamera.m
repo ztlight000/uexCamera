@@ -235,14 +235,19 @@
     //uexCamera.cbChangeFlashMode
     NSString *flashMode = [array objectAtIndex:0]?[array objectAtIndex:0]:@"0";
     if (_captureCameraView) {
-      NSString*mode = [_captureCameraView switchFlashMode:flashMode];
-        return @(mode.integerValue);
+        if (flashMode.integerValue == 0 || flashMode.integerValue == 1) {
+            NSString*mode = [_captureCameraView switchFlashMode:flashMode];
+            return @(mode.integerValue);
+        } else {
+            return @(-1);
+        }
+      
     }else{
         NSLog(@"EUExCamera==>>changeFlashMode==>>相机初始化失败");
         //[self jsSuccessWithName:@"uexCamera.cbChangeFlashMode" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:@"-1"];
-        [self.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeFlashMode" arguments:ACArgsPack(@0,@1,@"-1")];
+        [self.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeFlashMode" arguments:ACArgsPack(@0,@1,@"0")];
         NSLog(@"EUExCamera==>>changeFlashMode==>>回调完成");
-        return @(-1);
+        return @(0);
     }
     
 }
@@ -257,14 +262,19 @@
     }
     
     if (_captureCameraView) {
-       NSString *mode = [_captureCameraView switchCamera:cameraPosition];
-        return @(mode.integerValue);
+        if (cameraPosition.integerValue == 0 || cameraPosition.integerValue ==1) {
+            NSString *mode = [_captureCameraView switchCamera:cameraPosition];
+            return @(mode.integerValue);
+        }else{
+            return @(-1);
+        }
+      
     }else{
         NSLog(@"EUExCamera==>>changeCameraPosition==>>相机初始化失败");
         //[self jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:@"-1"];
-        [self.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeCameraPosition" arguments:ACArgsPack(@0,@1,@"-1")];
+        [self.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeCameraPosition" arguments:ACArgsPack(@0,@1,@"0")];
         NSLog(@"EUExCamera==>>changeCameraPosition==>>回调完成");
-        return @(-1);
+        return @(0);
     }
     
 }
@@ -274,7 +284,7 @@
     if (_captureCameraView) {
         NSLog(@"EUExCamera==>>removeViewCameraFromWindow==>>delegate关闭openViewCamera相机");
         [_captureCameraView removeFromSuperview];
-        _captureCameraView = nil;
+       
     }
     
 }
