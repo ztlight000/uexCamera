@@ -333,34 +333,39 @@
         });
 
         CameraPostViewController *pc = [[CameraPostViewController alloc] init];
+        pc.funcOpen = self.funcOpen;
         pc.postImage = stillImage;
         pc.address = _address;
         pc.uexObj = _uexObj;
         pc.quality = self.quality;
         pc.isCompress = NO;
-        [EUtility brwView:_meBrwView presentModalViewController:pc animated:YES];
+        [[_uexObj.webViewEngine viewController] presentViewController:pc animated:YES completion:nil];
+        //[EUtility brwView:_meBrwView presentModalViewController:pc animated:YES];
         
     }];
 }
 
 //拍照页面，切换前后摄像头按钮按钮
-- (void)switchCamera:(NSString *)cameraPosition {
+- (NSString*)switchCamera:(NSString *)cameraPosition {
     NSString * result = [_captureManager switchCamera:cameraPosition];
     if (_uexObj) {
-        [_uexObj jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
+        //[_uexObj jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
+        [_uexObj.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeCameraPosition" arguments:ACArgsPack(@0,@1,result)];
         
         NSLog(@"EUExCamera==>>cbChangeCameraPosition==>>回调完成");
     }
-    
+    return result;
 }
 
 //拍照页面，闪光灯按钮
-- (void)switchFlashMode:(NSString *)flashMode {
+- (NSString*)switchFlashMode:(NSString *)flashMode {
     NSString * result = [_captureManager switchFlashMode:flashMode];
     if (_uexObj) {
-        [_uexObj jsSuccessWithName:@"uexCamera.cbChangeFlashMode" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
+        //[_uexObj jsSuccessWithName:@"uexCamera.cbChangeFlashMode" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
+        [_uexObj.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeFlashMode" arguments:ACArgsPack(@0,@1,result)];
         NSLog(@"EUExCamera==>>cbChangeFlashMode==>>回调完成");
     }
+    return result;;
 }
 
 #pragma mark -------------pinch camera---------------

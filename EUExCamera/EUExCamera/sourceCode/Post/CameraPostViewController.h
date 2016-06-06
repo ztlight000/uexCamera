@@ -11,7 +11,7 @@
 #import "CameraDefines.h"
 #import "CameraCommon.h"
 #import "EUExCamera.h"
-#import "CameraPickerController.h"
+//#import "CameraPickerController.h"
 
 @interface CameraPostViewController : UIViewController
 
@@ -25,5 +25,5 @@
 @property (nonatomic, assign) id<CloseCaptureCameraDelegate> closeCameraDelegate;
 @property (nonatomic, assign) BOOL isByOpenInternal;
 @property (nonatomic, assign) BOOL isCompress;
-
+@property (nonatomic, strong) ACJSFunctionRef *funcOpen;
 @end
