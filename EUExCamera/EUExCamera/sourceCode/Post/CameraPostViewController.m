@@ -157,7 +157,7 @@
     if (_uexObj) {
         //[_uexObj jsSuccessWithName:@"uexCamera.cbOpenViewCamera" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:jsonString];
         [_uexObj.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbOpenViewCamera" arguments:ACArgsPack(@0,@(UEX_CALLBACK_DATATYPE_JSON),jsonString)];
-        [self.funcOpen executeWithArguments:ACArgsPack(@0,@(UEX_CALLBACK_DATATYPE_JSON),jsonString)];
+        [self.funcOpen executeWithArguments:ACArgsPack(jsonString)];
         NSLog(@"EUExCamera==>>submitBtnPressed==>>回调完成");
         self.funcOpen = nil;
     }
@@ -216,7 +216,7 @@
         NSLog(@"savaImg==>>保存路径==>>imagePath=%@",imagePath);
         //[self.uexObj jsSuccessWithName:@"uexCamera.cbOpenInternal" opId:0 dataType:UEX_CALLBACK_DATATYPE_TEXT strData:imagePath];
         [self.uexObj.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbOpenInternal" arguments:ACArgsPack(@0,@0,imagePath)];
-        [self.funcOpen executeWithArguments:ACArgsPack(@0,@0,imagePath)];
+        [self.funcOpen executeWithArguments:ACArgsPack(imagePath)];
     } else {
        // [self.uexObj jsFailedWithOpId:0 errorCode:1030105 errorDes:UEX_ERROR_DESCRIBE_FILE_SAVE];
     }
