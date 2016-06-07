@@ -132,7 +132,7 @@
 	if (inData) {
 		//[self jsSuccessWithName:@"uexCamera.cbOpen" opId:inOpId dataType:inDataType strData:inData];
         [self.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbOpen" arguments:ACArgsPack(@(inOpId),@(inDataType),inData)];
-        [self.funcOpen executeWithArguments:ACArgsPack(@(inOpId),@(inDataType),inData)];
+        [self.funcOpen executeWithArguments:ACArgsPack(inData)];
 	}
 }
 
