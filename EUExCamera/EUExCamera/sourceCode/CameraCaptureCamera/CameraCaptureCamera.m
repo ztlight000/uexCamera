@@ -129,7 +129,7 @@
     
     //拍照按钮
     CGFloat cameraBtnLength = kCameraBtnWH;
-    [self buildButton:CGRectMake((self.frame.size.width - cameraBtnLength) / 2, CGRectGetMaxY(self.frame) - kSpacing - cameraBtnLength , cameraBtnLength, cameraBtnLength)
+    [self buildButton:CGRectMake((self.frame.size.width - cameraBtnLength) / 2 + self.frame.origin.x, CGRectGetMaxY(self.frame) - kSpacing - cameraBtnLength , cameraBtnLength, cameraBtnLength)
          normalImgStr:@"plugin_camera_bt_takepic_normal"
       highlightImgStr:@"plugin_camera_bt_takepic_on"
        selectedImgStr:@""
@@ -339,6 +339,7 @@
         pc.uexObj = _uexObj;
         pc.quality = self.quality;
         pc.isCompress = NO;
+        pc.funcOpen = self.funcOpen;
         [[_uexObj.webViewEngine viewController] presentViewController:pc animated:YES completion:nil];
         //[EUtility brwView:_meBrwView presentModalViewController:pc animated:YES];
         

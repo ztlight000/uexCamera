@@ -432,9 +432,8 @@
     if (_uexObj) {
         //[_uexObj jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
         [_uexObj.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeCameraPosition" arguments:ACArgsPack(@0,@(UEX_CALLBACK_DATATYPE_JSON),result)];
-        [self.funcOpenInternal executeWithArguments:ACArgsPack(result)];
         NSLog(@"EUExCamera==>>cbChangeCameraPosition==>>回调完成");
-        self.funcOpenInternal = nil;
+        
         [self performSelector:@selector(changeIsAction) withObject:nil afterDelay:0.5f];
         
     }
