@@ -370,7 +370,7 @@
     [actiView startAnimating];
     [self.view addSubview:actiView];
     
-   // WEAKSELF_SC
+    WEAKSELF_SC
     [_captureManager takePicture:^(UIImage *stillImage) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             //[SCCommon saveImageToPhotoAlbum:stillImage];//存至本机
@@ -389,7 +389,6 @@
         NSLog(@"拍照完成==>>stillImage=%@",stillImage);
         if (stillImage) {
             CameraPostViewController *pc = [[CameraPostViewController alloc] init];
-            pc.funcOpen = self.funcOpenInternal;
             pc.postImage = stillImage;
             pc.uexObj = _uexObj;
             pc.quality = self.scale;
@@ -430,11 +429,10 @@
         [sender setImage:[CameraInternationalization getImageFromLocalFile:imgStr type:@"png"] forState:UIControlStateNormal];
     }
     if (_uexObj) {
-        //[_uexObj jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
-        [_uexObj.webViewEngine callbackWithFunctionKeyPath:@"uexCamera.cbChangeCameraPosition" arguments:ACArgsPack(@0,@(UEX_CALLBACK_DATATYPE_JSON),result)];
-        [self.funcOpenInternal executeWithArguments:ACArgsPack(result)];
+        [_uexObj jsSuccessWithName:@"uexCamera.cbChangeCameraPosition" opId:0 dataType:UEX_CALLBACK_DATATYPE_JSON strData:result];
+        
         NSLog(@"EUExCamera==>>cbChangeCameraPosition==>>回调完成");
-        self.funcOpenInternal = nil;
+        
         [self performSelector:@selector(changeIsAction) withObject:nil afterDelay:0.5f];
         
     }

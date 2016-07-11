@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0947D3101D017FD300419276 /* AppCanKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0947D30F1D017FD300419276 /* AppCanKit.framework */; };
 		5AA8D54B188F9DBB00C854BC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AA8D54A188F9DBB00C854BC /* Foundation.framework */; };
 		5AA8D552188F9DBB00C854BC /* EUExCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA8D551188F9DBB00C854BC /* EUExCamera.m */; };
 		D75F5EB01C6046B600F480FA /* CameraUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D75F5EAF1C6046B600F480FA /* CameraUtility.m */; };
@@ -60,7 +59,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0947D30F1D017FD300419276 /* AppCanKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCanKit.framework; sourceTree = "<group>"; };
 		5A60A94A18AB608500C727A6 /* EUExCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EUExCamera.h; sourceTree = "<group>"; };
 		5AA8D547188F9DBB00C854BC /* libuexCamera.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuexCamera.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AA8D54A188F9DBB00C854BC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,6 +66,7 @@
 		5AA8D551188F9DBB00C854BC /* EUExCamera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EUExCamera.m; sourceTree = "<group>"; };
 		5AA8D558188F9DBB00C854BC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5AA8D55B188F9DBB00C854BC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		5AA8D571188F9E2B00C854BC /* EUExBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBase.h; sourceTree = "<group>"; };
 		5AA8D572188F9E2B00C854BC /* EUExBaseDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUExBaseDefine.h; sourceTree = "<group>"; };
 		5AA8D573188F9E2B00C854BC /* EUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EUtility.h; sourceTree = "<group>"; };
 		D75F5EAE1C6046B600F480FA /* CameraUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtility.h; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0947D3101D017FD300419276 /* AppCanKit.framework in Frameworks */,
 				5AA8D54B188F9DBB00C854BC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +189,7 @@
 		5AA8D570188F9E2B00C854BC /* engineHeader */ = {
 			isa = PBXGroup;
 			children = (
+				5AA8D571188F9E2B00C854BC /* EUExBase.h */,
 				5AA8D572188F9E2B00C854BC /* EUExBaseDefine.h */,
 				5AA8D573188F9E2B00C854BC /* EUtility.h */,
 			);
@@ -200,7 +199,6 @@
 		D75F5EC01C604CE500F480FA /* sourceCode */ = {
 			isa = PBXGroup;
 			children = (
-				0947D30F1D017FD300419276 /* AppCanKit.framework */,
 				D75F5EC11C604CE500F480FA /* CameraCaptureCamera */,
 				D75F5ECE1C604CE500F480FA /* CameraPickerController */,
 				D75F5ECA1C604CE500F480FA /* CameraCommon */,
@@ -517,10 +515,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/";
 				DSTROOT = /tmp/EUExCamera.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/EUExCamera/sourceCode",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExCamera/EUExCamera-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;
@@ -537,10 +531,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/uexCamera/";
 				DSTROOT = /tmp/EUExCamera.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/EUExCamera/sourceCode",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EUExCamera/EUExCamera-Prefix.pch";
 				ONLY_ACTIVE_ARCH = NO;

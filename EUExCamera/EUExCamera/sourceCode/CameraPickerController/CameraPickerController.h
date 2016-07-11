@@ -21,7 +21,7 @@
 @property (nonatomic, assign) CGFloat scale;
 @property (nonatomic, assign) BOOL isCompress;
 @property (nonatomic, assign) BOOL isAction;
-@property (nonatomic, strong) ACJSFunctionRef *funcOpenInternal;
+
 //@property (nonatomic, assign) id<CloseCaptureCameraDelegate> closeCameraDelegate;
 
 @end
